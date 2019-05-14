@@ -4,6 +4,10 @@ resources:
 pool:
   name: Hosted Ubuntu 1604
 steps:
+- task: Go@0
+  inputs:
+    command: 'test'
+    arguments: './tests'
 - task: Docker@0
   displayName: 'Build an image'
   inputs:
@@ -11,7 +15,6 @@ steps:
     azureContainerRegistry: '{"loginServer":"openhacknwm4acr.azurecr.io", "id" : "/subscriptions/d25a0594-50be-4cee-8509-1125541f419d/resourceGroups/openhacknwm4rg/providers/Microsoft.ContainerRegistry/registries/openhacknwm4acr"}'
     dockerFile: apis/trips/Dockerfile
     imageName: 'openhacknwm4acr.azurecr.io/devopsoh/api-trips:$(Build.BuildId)'
-
 - task: Docker@0
   displayName: 'Push an image'
   inputs:
@@ -19,7 +22,6 @@ steps:
     azureContainerRegistry: '{"loginServer":"openhacknwm4acr.azurecr.io", "id" : "/subscriptions/d25a0594-50be-4cee-8509-1125541f419d/resourceGroups/openhacknwm4rg/providers/Microsoft.ContainerRegistry/registries/openhacknwm4acr"}'
     action: 'Push an image'
     imageName: 'openhacknwm4acr.azurecr.io/devopsoh/api-trips:$(Build.BuildId)'
-
 trigger:
   branches:
     include:
@@ -27,8 +29,3 @@ trigger:
   paths:
     include:
     - apis/trips
-
-- task: Go@0
-  inputs:
-    command: 'test'
-    arguments: './tests'

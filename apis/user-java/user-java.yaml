@@ -10,6 +10,7 @@ steps:
     azureSubscription: 'ACR Connection'
     azureContainerRegistry: '{"loginServer":"openhacknwm4acr.azurecr.io", "id" : "/subscriptions/d25a0594-50be-4cee-8509-1125541f419d/resourceGroups/openhacknwm4rg/providers/Microsoft.ContainerRegistry/registries/openhacknwm4acr"}'
     dockerFile: apis/user-java/Dockerfile
+    imageName: 'openhacknwm4acr.azurecr.io/devopsoh/api-user-java:$(Build.BuildId)'
 
 - task: Docker@0
   displayName: 'Push an image'
@@ -17,6 +18,12 @@ steps:
     azureSubscription: 'OTA-PRD-217 (d25a0594-50be-4cee-8509-1125541f419d)'
     azureContainerRegistry: '{"loginServer":"openhacknwm4acr.azurecr.io", "id" : "/subscriptions/d25a0594-50be-4cee-8509-1125541f419d/resourceGroups/openhacknwm4rg/providers/Microsoft.ContainerRegistry/registries/openhacknwm4acr"}'
     action: 'Push an image'
-    imageName: 'openhacknwm4acr.azurecr.io/$(Build.Repository.Name):$(Build.BuildId)'
+    imageName: 'openhacknwm4acr.azurecr.io/devopsoh/api-user-java:$(Build.BuildId)'
 
-
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - apis/user-java

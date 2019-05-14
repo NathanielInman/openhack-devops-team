@@ -7,7 +7,7 @@ steps:
 - task: Go@0
   inputs:
     command: 'test'
-    arguments: './tests'
+    arguments: 'apis/trips/tests'
 - task: Docker@0
   displayName: 'Build an image'
   inputs:

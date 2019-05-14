@@ -17,7 +17,7 @@ steps:
     azureSubscription: 'OTA-PRD-217 (d25a0594-50be-4cee-8509-1125541f419d)'
     azureContainerRegistry: '{"loginServer":"openhacknwm4acr.azurecr.io", "id" : "/subscriptions/d25a0594-50be-4cee-8509-1125541f419d/resourceGroups/openhacknwm4rg/providers/Microsoft.ContainerRegistry/registries/openhacknwm4acr"}'
     action: 'Push an image'
-    imageName: 'openhacknwm4acr.azurecr.io/api-poi:latest'
+    imageName: 'openhacknwm4acr.azurecr.io/devopsoh/api-poi:$(Build.BuildId)'
 trigger:
   branches:
     include:

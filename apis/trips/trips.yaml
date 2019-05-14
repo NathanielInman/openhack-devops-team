@@ -7,7 +7,8 @@ steps:
 - task: Go@0
   inputs:
     command: 'test'
-    arguments: '/apis/trips/tests'
+    workingDirectory: 'apis/trips'
+  timeoutInMinutes: 5
 - task: Docker@0
   displayName: 'Build an image'
   inputs:

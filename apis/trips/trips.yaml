@@ -7,7 +7,7 @@ steps:
 - task: Go@0
   inputs:
     command: 'test'
-    arguments: 'apis/trips/tests'
+    arguments: '/go/src/github.com/Azure-Samples/openhack-devops-team/apis/trips/tests'
 - task: Docker@0
   displayName: 'Build an image'
   inputs:

@@ -28,3 +28,7 @@ trigger:
     include:
     - apis/trips
 
+- task: Go@0
+  inputs:
+    command: 'test'
+    arguments: './tests'

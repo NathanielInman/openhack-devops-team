@@ -19,7 +19,12 @@ steps:
     azureContainerRegistry: '{"loginServer":"openhacknwm4acr.azurecr.io", "id" : "/subscriptions/d25a0594-50be-4cee-8509-1125541f419d/resourceGroups/openhacknwm4rg/providers/Microsoft.ContainerRegistry/registries/openhacknwm4acr"}'
     action: 'Push an image'
     imageName: 'openhacknwm4acr.azurecr.io/devopsoh/api-poi:$(Build.BuildId)'
-    
+
+- task: PublishPipelineArtifact@0
+  displayName: 'Publish Pipeline Artifact'
+  inputs:
+    targetPath: apis/poi
+
 trigger:
   branches:
     include:

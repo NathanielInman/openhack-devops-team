@@ -20,6 +20,11 @@ steps:
     action: 'Push an image'
     imageName: 'openhacknwm4acr.azurecr.io/devopsoh/api-userprofile:$(Build.BuildId)'
 
+- task: PublishPipelineArtifact@0
+  displayName: 'Publish Pipeline Artifact'
+  inputs:
+    targetPath: apis/userprofile
+
 trigger:
   branches:
     include:
